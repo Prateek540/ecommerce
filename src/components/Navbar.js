@@ -11,12 +11,11 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import ListIcon from "@mui/icons-material/List";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
-import CartModal from "./CartModal";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { Link } from "react-router-dom";
 
-const pages = ["Home", "Electronics", "Fashion"];
-const pagesLink = ["/", "/electronics", "/fashion"];
+const pages = ["Home", "Electronics", "Fashion", "Cart"];
+const pagesLink = ["/", "/electronics", "/fashion", "/cart"];
 const settings = ["Profile", "Logout"];
 
 function Navbar() {
@@ -170,9 +169,6 @@ function Navbar() {
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
-              <MenuItem onClick={handleCloseUserMenu}>
-                <CartModal />
-              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>

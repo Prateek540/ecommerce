@@ -10,3 +10,17 @@ body {
   background-color: #f1f3f6;
   color: #152336;
 }
+
+.total {
+  float: right;
+}
+
+.total h3,
+h4 {
+  display: inline-block;
+  margin-left: 2rem;
+}
+
+.buttonSet button {
+  margin-right: 2rem;
+}

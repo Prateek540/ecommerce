@@ -54,7 +54,7 @@ function Cards(props) {
           <RemoveIcon />
         </Button>
         <Typography sx={{ ml: 1 }} variant="h5" component="div">
-          {props.count}
+          0.0
         </Typography>
         <Button
           variant="outlined"
