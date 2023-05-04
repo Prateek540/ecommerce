@@ -6,10 +6,18 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { Button, Container } from "@mui/material";
-import products from "./Products";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { remove } from "../slices/counterSlice";
 
 export default function Cart() {
-  const newProducts = products.filter((item) => item.type === "offer");
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.counterCart);
+  const newProducts = products.filter((item) => item.count > 0);
+  let orderTotal = 0;
+  newProducts.forEach((item) => {
+    orderTotal = orderTotal + item.cost * item.count;
+  });
   return (
     <Container>
       <TableContainer>
@@ -42,9 +50,9 @@ export default function Cart() {
                   />
                 </TableCell>
                 <TableCell align="right">{row.name}</TableCell>
-                <TableCell align="right">0</TableCell>
-                <TableCell align="right">{row.cost}</TableCell>
-                <TableCell align="right">0</TableCell>
+                <TableCell align="right">{row.count}</TableCell>
+                <TableCell align="right">₹{row.cost}</TableCell>
+                <TableCell align="right">₹{row.total}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -52,12 +60,25 @@ export default function Cart() {
       </TableContainer>
       <div className="total">
         <h3>Total</h3>
-        <h4>₹0.00</h4>
+        <h4>₹{orderTotal}</h4>
       </div>
-      <div className="buttonSet">
-        <Button variant="outlined">Order</Button>
-        <Button variant="contained">Remove All Items</Button>
-      </div>
+      {newProducts.length > 0 && (
+        <div className="buttonSet">
+          <Button
+            variant="outlined"
+            onClick={() => {
+              dispatch(remove());
+              alert("Your order is submitted.");
+            }}
+          >
+            Order
+          </Button>
+          <Button variant="contained" onClick={() => dispatch(remove())}>
+            Remove
+          </Button>
+        </div>
+      )}
+      {newProducts.length === 0 && <h3>Your Cart is empty.</h3>}
     </Container>
   );
 }

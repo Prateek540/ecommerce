@@ -1,8 +1,9 @@
 import Grids from "./Grids";
 import { Container } from "@mui/system";
-import products from "../components/Products";
+import { useSelector } from "react-redux";
 
 function Electronics() {
+  const products = useSelector((state) => state.counterCart);
   const newProducts = products.filter((item) => item.type === "electronics");
   return (
     <>

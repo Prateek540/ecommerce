@@ -15,6 +15,7 @@ function Grids(props) {
                   cost={data.cost}
                   img={data.img}
                   count={data.count}
+                  total={data.total}
                 />
               </Grid>
             );

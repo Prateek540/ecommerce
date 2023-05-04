@@ -7,8 +7,12 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import { increment, decrement } from "../slices/counterSlice";
+import { useDispatch } from "react-redux";
 
 function Cards(props) {
+  const dispatch = useDispatch();
+  const id = props.id;
   return (
     <Card
       sx={{
@@ -39,11 +43,12 @@ function Cards(props) {
           variant="body2"
           color="text.secondary"
         >
-          {props.cost}
+          ₹{props.cost}
         </Typography>
       </CardContent>
       <CardActions>
         <Button
+          onClick={() => dispatch(decrement({ id }))}
           variant="outlined"
           color="error"
           sx={{
@@ -54,9 +59,10 @@ function Cards(props) {
           <RemoveIcon />
         </Button>
         <Typography sx={{ ml: 1 }} variant="h5" component="div">
-          0.0
+          {props.count}
         </Typography>
         <Button
+          onClick={() => dispatch(increment({ id }))}
           variant="outlined"
           color="success"
           sx={{

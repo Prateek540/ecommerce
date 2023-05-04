@@ -1,9 +1,10 @@
 import { Container } from "@mui/system";
 import Grids from "./Grids";
-import products from "../components/Products";
 import Carousels from "./Carousels";
+import { useSelector } from "react-redux";
 
 function Home() {
+  const products = useSelector((state) => state.counterCart);
   const newProducts = products.filter((item) => item.type === "offer");
   return (
     <>
