@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Oxygen", sans-serif;
+}
+
+body {
+  background-color: #f1f3f6;
+  color: #152336;
+}
+
+.total {
+  float: right;
+}
+
+.total h3,
+h4 {
+  display: inline-block;
+  margin-left: 2rem;
+}
+
+.buttonSet button {
+  width: 100px;
+  height: auto;
+  margin: 0.3rem;
+}
